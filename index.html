@@ -1,1 +1,59 @@
-<div>MultCloud(<a target="_blank" href="https://www.multcloud.com/">https://www.multcloud.com/</a>), a FREE and easy-to-use web app, supports for Managing Files and Transferring Files across Cloud Drives. Free provide 10TB traffic for data transmission.</div>
+<html>
+	<head>
+		<title>Prueba de simbolos en ipad</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<style>
+		body{
+			font-family:"Open Sans";
+			font-size: 15pt;
+		}
+		#salida{
+			font-size:1.3em;
+		}
+		</style>
+	</head>
+	<body>
+		<div>
+			<table  id="salida">
+				<thead>
+					<tr>
+						<td></td>
+						<td>id</td>
+						<td>falso</td>
+						<td>real</td>
+					</tr>
+				</thead>
+				<tbody>
+				
+				</tbody>
+			</table>
+		</div>
+		<script>
+			jQuery(document).ready(function(){
+			disponibles = [
+				{ id: 1, 'falso': '&', 'real': '8' },
+				{ id: 2, 'falso': '8', 'real': '&' },
+				{ id: 3, 'falso': 'ω', 'real': '𝜔' },
+				//{id:4, 'falso': '𝚿', 'real': '𝜳' },
+				{ id: 5, 'falso': 'υ', 'real': 'u' },
+				//{id:6, 'falso': '|', 'real': 'l' },
+				//{ id: 7, 'falso': '𝞟', 'real': 'Π' },//
+				{ id: 8, 'falso': '@', 'real': '⦾' },
+				{ id: 9, 'falso': '☰', 'real': 'Ⲷ' }, //
+				{ id: 10, 'falso': '⋀', 'real': '∧' },//
+			];
+			var html = '';
+			jQuery.each(disponibles,function(){
+				
+				html+= '<tr><td><input type="checkbox" value="1"/></td><td>' + this.id + '</td><td>' + this.falso + '</td><td>' + this.real + '</td></tr>';
+				
+			});
+jQuery('#salida tbody').html(html);
+				console.log(html);
+			
+			});
+		</script>
+	</body>
+</html>
