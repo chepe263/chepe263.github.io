@@ -188,9 +188,15 @@
 			disponibles = [
 				{ id: 1, 'falso': '&', 'real': '8' },
 				{ id: 2, 'falso': '8', 'real': '&' },
+				{ id: 5, 'falso': 'υ', 'real': 'u' },
+				{ id: 15, "falso": "❻", "real": "➏" },
+				{ id: 21, "falso": "㎠", "real": "㎤" },
+				{ id: 24, "falso": "գ", "real": "զ" },
+				{ id: 25, "falso": "র", "real": "ৰ" },
+
 				{ id: 3, 'falso': 'ω', 'real': '𝜔' },
 				//{id:4, 'falso': '𝚿', 'real': '𝜳' },
-				{ id: 5, 'falso': 'υ', 'real': 'u' },
+				
 				//{id:6, 'falso': '|', 'real': 'l' },
 				//{ id: 7, 'falso': '𝞟', 'real': 'Π' },//
 				{ id: 8, 'falso': '@', 'real': '⦾' },
@@ -200,17 +206,16 @@
 				{id: 12, "falso":"ᴆ","real":"ᴅ"},
 				{id: 13, "falso":"ᴓ","real":"ᴑ"},
 				{id: 14, "falso":"⓺","real":"➅"},
-				{id: 15, "falso":"❻","real":"➏"},
+				
 				{id: 16, "falso":"≄","real":"≇"},
 				{id: 17, "falso":"≇","real":"≢"},
 				{id: 18, "falso":"≄","real":"≭"},
 				{id: 19, "falso":"㏧","real":"㋇"},
 				{id: 20, "falso":"ℇ","real":"ℰ"},
-				{id: 21, "falso":"㎠","real":"㎤"},
+				
 				{id: 22, "falso":"ℜ","real":"ℛ"},
 				{id: 23, "falso":"㋛","real":"㋡"},
-				{id: 24, "falso":"գ","real":"զ"},
-				{id: 25, "falso":"র","real":"ৰ"},
+				
 				{id: 26, "falso":"⚏","real":"⚎"},
 			];
 			var html = '';
@@ -219,8 +224,8 @@
 				html+= '<tr><td><input type="checkbox" value="1"/></td><td>' + this.id + '</td><td>' + this.falso + '</td><td>' + this.real + '</td></tr>';
 				
 			});
-jQuery('#salida tbody').html(html);
-				console.log(html);
+			jQuery('#salida tbody').html(html);
+				//console.log(html);
 			
 			});
 
