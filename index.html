@@ -1,4 +1,4 @@
-<html>
+﻿<html>
 	<head>
 		<title>Prueba de simbolos en ipad</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -14,10 +14,52 @@
 		#salida{
 			font-size:1.3em;
 		}
-		.columna{}
+		.columna{
+			display: none;
+		}
+		.here {
+			color: purple;
+		}
 		</style>
 	</head>
 	<body>
+	<div class="row">
+		<div class="col-sm-4">
+			<div class="col-sm-6">
+				<h1>Distraccion</h1>
+				<ul id="listaFalso"></ul>
+			</div>
+			<div class="col-sm-6">
+				<h1>Simbolo a buscar</h1>
+				<ul id="listaReal">
+				</ul>
+			</div>
+		
+		</div>
+		<div class="col-sm-8">
+			<div>
+				<textarea id="txtEntrada"></textarea>
+				<p>
+					<a href="http://unicodeemoticons.com/symbols_all.htm" target="_blank">Simbolos de ejemplo</a>
+				</p>
+				<p>
+					<button type="button" id="btnConvertir">
+						Procesar
+					</button>
+				</p>
+				<p>
+					<h3>Actual</h3>
+					<pre id="current">
+
+					</pre>
+				</p>
+			</div>
+			<div id="plano">
+
+			</div>
+
+		</div>
+	</div>
 		<div class="columna columnaa">
 			<table  id="salida">
 				<thead>
@@ -59,7 +101,87 @@
 			</table>
 		</div>
 		<script>
-			jQuery(document).ready(function(){
+			function numeroAleatorio(min, max) {
+				if (min < 0) {
+					return min + Math.random() * (Math.abs(min) + max);
+				} else {
+					return min + Math.random() * max;
+				}
+			}
+			simboloFalso = 'A';
+			simboloReal = 'a';
+			generarTablero = function () {
+
+				elementos = { 'falso': simboloFalso, 'real': simboloReal };
+				jQuery('#current').html(JSON.stringify(elementos));
+				elementosEnLinea = 20;
+				//elementosEnLinea = 16;
+				lineas = 5;
+				/*if (elementos.falso.length > 1) {
+					elementos.falso = ConsolaUtilidad.funciones.desordenar2(elementos.falso.split('')).join('');
+					elementos.real = ConsolaUtilidad.funciones.desordenar2(elementos.real.split('')).join('');
+
+					elementosEnLinea = Math.floor(elementosEnLinea / elementos.falso.length);
+				} else {
+					elementosEnLinea = 10;
+				}*/
+
+				var vhtml = '';
+				var basefaclass = "fa fa-4x fa-fw ";
+				var cont = 0;
+
+				//vhtml2 = vhtml + "<br />";
+				for (var lines = 0; lines < lineas ; lines++) {
+					if (elementos.falso.length > 1) {
+						var arregloYemporal = elementos.falso.split('');
+						arregloYemporal.push(arregloYemporal[0]);
+						arregloYemporal[0] = '';
+						elementos.falso = arregloYemporal.join('');
+
+					}
+					for (var rows = 0; rows < elementosEnLinea; rows++) {
+						vhtml += '<span class="letra">' + elementos.falso + '</span>';
+					}
+					vhtml += "<br />";
+
+				}
+				jQuery('#plano').html(vhtml);
+
+				var remu = Math.floor(numeroAleatorio(10, jQuery('#plano span.letra').length - 10));
+				jQuery('#plano span').eq(remu).html(elementos.real).addClass('here');
+
+			}
+			jQuery(document).ready(function () {
+
+				jQuery('#btnConvertir').click(function () {
+					var simbolos = jQuery('#txtEntrada').val().replace(/\s+/, '').split('');
+					if (simbolos.length < 2) {
+						return alert("Faltan simbolos");
+					}
+					
+					var listahtml = '';
+					jQuery.each(simbolos, function () {
+						listahtml+="<li><a href='#' class='simbolo'>" +  this + "</a></li>"
+					});
+					jQuery('#listaFalso, #listaReal').html(listahtml);
+
+				});
+				$("#listaFalso").on("click", ".simbolo", function () {
+					simboloFalso = $(this).html();
+					generarTablero();
+				});
+
+				$("#listaReal").on("click", ".simbolo", function () {
+					simboloReal = $(this).html();
+					generarTablero();
+				});
+
+
+
+
+
+
+
 			disponibles = [
 				{ id: 1, 'falso': '&', 'real': '8' },
 				{ id: 2, 'falso': '8', 'real': '&' },
@@ -83,49 +205,8 @@ jQuery('#salida tbody').html(html);
 				console.log(html);
 			
 			});
-			
-generarTablero = function () {
-	ConsolaUtilidad.funciones.desordenar(disponibles);
-	ConsolaUtilidad.funciones.desordenar(disponibles);
-	elementos = disponibles[0];
-	elementosEnLinea = 20;
-	//elementosEnLinea = 16;
-	lineas = 5;
-	if (elementos.falso.length > 1) {
-		elementos.falso = ConsolaUtilidad.funciones.desordenar2(elementos.falso.split('')).join('');
-		elementos.real = ConsolaUtilidad.funciones.desordenar2(elementos.real.split('')).join('');
 
-		elementosEnLinea = Math.floor(elementosEnLinea / elementos.falso.length);
-	} else {
-		elementosEnLinea = 10;
-	}
-
-	var vhtml = '';
-	var basefaclass = "fa fa-4x fa-fw ";
-	var cont = 0;
-
-	//vhtml2 = vhtml + "<br />";
-	for (var lines = 0; lines < lineas ; lines++) {
-		if (elementos.falso.length > 1) {
-			var arregloYemporal = elementos.falso.split('');
-			arregloYemporal.push(arregloYemporal[0]);
-			arregloYemporal[0] = '';
-			elementos.falso = arregloYemporal.join('');
-
-		}
-		for (var rows = 0; rows < elementosEnLinea; rows++) {
-			vhtml += '<span class="letra">' + elementos.falso + '</span>';
-		}
-		vhtml += "<br />";
-
-	}
-	jQuery('#tableroA').html(vhtml);
-
-	remu = ConsolaUtilidad.funciones.numeroAleatorio(10, jQuery('#tableroA span.letra').length - 10);
-	jQuery('#tableroA span').eq(remu).html(elementos.real).addClass('here');
-	encantarCeldas();
-
-}			
+		
 			
 		</script>
 	</body>
