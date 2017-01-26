@@ -186,37 +186,22 @@
 
 
 			disponibles = [
-				{ id: 1, 'falso': '&', 'real': '8' },
-				{ id: 2, 'falso': '8', 'real': '&' },
-				{ id: 5, 'falso': 'υ', 'real': 'u' },
-				{ id: 15, "falso": "❻", "real": "➏" },
-				{ id: 21, "falso": "㎠", "real": "㎤" },
-				{ id: 24, "falso": "գ", "real": "զ" },
-				{ id: 25, "falso": "র", "real": "ৰ" },
-
-				{ id: 3, 'falso': 'ω', 'real': '𝜔' },
-				//{id:4, 'falso': '𝚿', 'real': '𝜳' },
+				{ id: 1, 'falso': '&nbsp;&amp;&nbsp;', 'real': '&nbsp;8&nbsp;' },
+				{ id: 2, 'falso': '&nbsp;8&nbsp;', 'real': '&amp;&nbsp;' }, //Ampersand
+				{ id: 5, 'falso': '&nbsp;υ&nbsp;', 'real': '&nbsp;u&nbsp;' },
+				{ id: 21, "falso": "&nbsp;㎠&nbsp;", "real": "&nbsp;㎤&nbsp;" },
+				{ id: 24, "falso": "&nbsp;գ&nbsp;", "real": "&nbsp;զ&nbsp;" },
+				{ id: 25, "falso": "&nbsp;র&nbsp;", "real": "&nbsp;ৰ&nbsp;" },
+				{ id: 27, "falso": "▨", "real": "▧" },
+				{ id: 28, "falso": "ぼ", "real": "ぽ" },
+				{ id: 29, "falso": "き", "real": "さ" },
+				{ id: 30, "falso": "✭", "real": "✮" },
+				{ id: 31, "falso": "㎟", "real": "㎣" },
+				{ id: 32, "falso": "㋐", "real": "㋔" },
 				
-				//{id:6, 'falso': '|', 'real': 'l' },
-				//{ id: 7, 'falso': '𝞟', 'real': 'Π' },//
-				{ id: 8, 'falso': '@', 'real': '⦾' },
-				{ id: 9, 'falso': '☰', 'real': 'Ⲷ' }, //
-				{ id: 10, 'falso': '⋀', 'real': '∧' },//
-				{ id: 11, 'falso': 'ഋ ', 'real': 'ൠ' },//
-				{id: 12, "falso":"ᴆ","real":"ᴅ"},
-				{id: 13, "falso":"ᴓ","real":"ᴑ"},
-				{id: 14, "falso":"⓺","real":"➅"},
-				
-				{id: 16, "falso":"≄","real":"≇"},
-				{id: 17, "falso":"≇","real":"≢"},
-				{id: 18, "falso":"≄","real":"≭"},
-				{id: 19, "falso":"㏧","real":"㋇"},
-				{id: 20, "falso":"ℇ","real":"ℰ"},
-				
-				{id: 22, "falso":"ℜ","real":"ℛ"},
-				{id: 23, "falso":"㋛","real":"㋡"},
-				
-				{id: 26, "falso":"⚏","real":"⚎"},
+				{id: 27, "falso":"Ỗ","real":"Ổ"}
+				{id: 27, "falso":"ぬ","real":"め"}
+				{id: 27, "falso":"お","real":"あ"}
 			];
 			var html = '';
 			jQuery.each(disponibles,function(){
